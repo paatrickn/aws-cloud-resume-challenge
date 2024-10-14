@@ -7,5 +7,4 @@ Tech Stack:
 - S3
 - AWS CloudFront
 - AWS Lambda
-- Dynamo DB
-- 
+- Dynamo DB 
