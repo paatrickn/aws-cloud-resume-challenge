@@ -9,4 +9,3 @@ Tech Stack:
 - AWS Lambda
 - Dynamo DB 
 
-!(image)[AWS Resume Challenge Diagram.drawio.png]
