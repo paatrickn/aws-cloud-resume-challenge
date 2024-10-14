@@ -8,3 +8,5 @@ Tech Stack:
 - AWS CloudFront
 - AWS Lambda
 - Dynamo DB 
+
+!(image)[AWS Resume Challenge Diagram.drawio.png]
