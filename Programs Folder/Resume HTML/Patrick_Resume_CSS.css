@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*White Paper size*/
+.container {
+    max-width: 1000px;   
+    min-height: 100px;
+    max-height: 2000px;
+    background: #F5F5F5;
+    margin: 0px auto 0px; 
+    box-shadow: 1px 1px 2px #DAD7D7;
+    border-radius: 3px;  
+    padding: 25px;
+    margin-top: 50px;
+}
+
+html {
+    height: 100%;  
+
+}
+
+body {
+    min-height: 100%;  
+    background: #a8a8a8;
+    font-family: Helvetica, sans-serif; 
+    font-weight: 400;
+    color: #222;
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 50px;
+
+}
+
+.about {
+    display: inline-block
+}
+
+.experience {
+    display: inline-block
+}
+
+.full-name {
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 10px
+}
+
+.section_list {
+    display: flex;
+    margin-bottom: 20px;
+
+}
+
+.right {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.left {
+    width: 80%
+}
+.right {
+    text-align: right;
+    width: 20%
+}
+
+.company_name{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.job_date {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 0px;
+    text-decoration: underline;
+}
+
+
+.job_title{
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 2px;
+    color: rgb(12, 46, 157)
+}
+
+.section_title {
+    font-weight: bold;
+    text-decoration: underline; 
+    font-size: 20px;
+    margin-bottom: 5px;
+
+}
+
+.bullet_points {
+    font-size: 13px;
+}
+
+.experience {
+    text-decoration: underline;
+}
+
+
+.graduation_date {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 0px;
+    text-decoration: underline;
+}
+
+
+.certification_name {
+    font-weight: bold;
+    color: orange;
+}
+.certification_issue_date {
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 0px;
+    text-decoration: underline;
+}
+.visitor_count {
+    font-weight: bold;
+}
+  
+.synology_nas {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.html_resume_project {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+li {
+    line-height: 19px;
+    overflow-wrap: break-word;
+}
+
+hr {
+    border-color: rgb(0, 0, 0);
+    margin: auto;
+    border-width: 2px;
+    width: 90%;
+    margin-bottom: 13px;
+    margin-top: 13px;
+}
