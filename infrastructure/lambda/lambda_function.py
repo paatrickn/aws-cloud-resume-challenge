@@ -35,7 +35,7 @@ def lambda_handler(event, context):
     view_count = view_count + 1
     print(view_count)
     
-    response = table.put_item(Item={
+    response = table.update_item(Item={
         'stat':'view-count',
         'view-count': view_count
     })
