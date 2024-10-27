@@ -74,7 +74,6 @@ data "archive_file" "init" {
 resource "aws_lambda_function_url" "test_latest" {
   function_name      = aws_lambda_function.test_lambda_function.function_name
   authorization_type = "NONE"
-
   cors {
   allow_credentials = true
   allow_origins     = ["*"]
@@ -83,4 +82,18 @@ resource "aws_lambda_function_url" "test_latest" {
   expose_headers    = ["keep-alive", "date"]
   max_age           = 86400
   }
+}   
+
+
+# This section will allow lambda to accept the trigger from API Gateway
+
+resource "aws_lambda_permission" "apigw" {
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.test_lambda_function.function_name}"
+  principal     = "apigateway.amazonaws.com"
+
+  # The /*/* portion grants access from any method on any resource
+  # within the API Gateway "REST API".
+  source_arn = "${aws_api_gateway_rest_api.incrementViewerTerraform-API.execution_arn}/*/*"
 }
