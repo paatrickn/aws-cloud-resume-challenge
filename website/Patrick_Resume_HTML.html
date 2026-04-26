@@ -1,194 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="Patrick_Resume_CSS.css">
-        <!-- <link rel="stylesheet" href="https://paatrick.com/Patrick_Resume_CSS.css"> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patrick Nguyen — OT Security Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <script type="text/javascript" src="Patrick_Resume_JS.js"></script>
+  <!-- <script type="text/javascript" src="https://paatrick.com/Patrick_Resume_JS.js"></script> -->
+  <style>
+    :root {
+      --bg:      oklch(0.985 0.005 80);
+      --surface: oklch(0.975 0.006 80);
+      --ink:     oklch(0.13 0.01 250);
+      --muted:   oklch(0.45 0.01 250);
+      --rule:    oklch(0.88 0.006 250);
+      --accent:  oklch(0.60 0.13 205);
+      --accent2: oklch(0.60 0.13 205);
+    }
 
-        <script type="text/javascript" src="Patrick_Resume_JS.js"></script>
-        <!-- <script type="text/javascript" src="https://paatrick.com/Patrick_Resume_JS.js"></script> -->
-    </head>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
+    body {
+      min-height: 100vh;
+    }
+
+    /* ── Layout ───────────────────────────────────── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+
+    /* ── Visit counter ────────────────────────────── */
+    .counter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 64px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: 'DM Sans', monospace;
+    }
+    .counter-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+    .counter-val {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Header ───────────────────────────────────── */
+    header {
+      margin-bottom: 56px;
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 7vw, 68px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .name span {
+      color: var(--accent);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 28px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .meta a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .meta a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* ── Section ──────────────────────────────────── */
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── Experience entry ─────────────────────────── */
+    .entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0 24px;
+      margin-bottom: 36px;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .entry::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 0;
+      width: 2px;
+      background: var(--rule);
+    }
+
+    .entry:hover::before {
+      background: var(--accent);
+      transition: background 0.2s;
+    }
+
+    .entry-head {
+      grid-column: 1;
+    }
+    .entry-meta {
+      grid-column: 2;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .entry-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .entry-org {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+
+    .entry-summary {
+      font-size: 13px;
+      color: oklch(0.38 0.01 250);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .entry-location {
+      font-size: 11px;
+      color: oklch(0.65 0.005 250);
+      margin-top: 2px;
+    }
+
+    .bullets {
+      list-style: none;
+      padding: 0;
+      grid-column: 1 / -1;
+      margin-top: 0;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 5px;
+      font-size: 13.5px;
+      color: oklch(0.28 0.01 250);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--rule);
+      font-size: 11px;
+      top: 1px;
+    }
+
+    /* ── Education ────────────────────────────────── */
+    .edu-entry {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 4px 24px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .edu-entry::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      height: calc(100% - 6px);
+      width: 2px;
+      background: var(--rule);
+    }
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .edu-school {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 300;
+      grid-column: 1;
+    }
+    .edu-when {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: right;
+    }
+    .edu-where {
+      font-size: 11px;
+      color: oklch(0.65 0.005 250);
+      text-align: right;
+    }
+
+    /* ── Certifications ───────────────────────────── */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+
+    .cert-card {
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 18px 20px;
+      background: var(--surface);
+      transition: border-color 0.15s;
+    }
+    .cert-card:hover {
+      border-color: var(--accent);
+    }
+
+    .cert-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .cert-abbr {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .cert-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+    }
+    .cert-date {
+      color: var(--muted);
+    }
+    .cert-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+    .cert-link:hover {
+      border-color: var(--accent);
+    }
+
+    /* ── Skills ───────────────────────────────────── */
+    .skills-group {
+      margin-bottom: 18px;
+      padding-left: 16px;
+      position: relative;
+    }
+    .skills-group::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      height: calc(100% - 6px);
+      width: 2px;
+      background: var(--rule);
+    }
+    .skills-group:hover::before {
+      background: var(--accent);
+      transition: background 0.2s;
+    }
+    .skills-category {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .skills-list {
+      font-size: 13.5px;
+      color: oklch(0.28 0.01 250);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    /* ── Footer ───────────────────────────────────── */
+    footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: oklch(0.72 0.005 250);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media (max-width: 600px) {
+      .page { padding: 48px 24px 80px; }
+      .entry { grid-template-columns: 1fr; }
+      .entry-meta { text-align: left; margin-bottom: 8px; grid-row: 1; }
+      .entry-head { grid-row: 2; }
+    }
+  </style>
+</head>
 <body>
+  <div class="page">
 
-
-<div class="container">
-
-    <!-- This section is for my general contact information -->
-    <div class="visitor_count">
-        <span class="Visitors_text">Website Visits:</span>
-        <span id="visits_count">Loading...</span>
-
-    </div>
-    <div class="header">
-        <br>
-        <div class="full-name">
-            <span class="first-name">Patrick</span> 
-            <span class="last-name">Nguyen</span>
-        </div>
-        <div class="info">
-            <span class="email">Email:</span>
-            <span class="email-value">nguyen.c.patrick@gmail.com</span><br>
-            <span class="city">City:</span>
-            <span class="city-value">New York City</span><br>
-            <!-- <span class="phone">Phone: (###) - ### - ####</span><br> -->
-        </div>
-    </div>
-    
-    <!-- This section is my general summary area to talk about about myself a bit-->
-    <!-- <div class = "about">
-        <span class="summary">Summary:</span>
-        <span class="desc">I am currently a Security Engineer at a power transmission substation.
-        </span>
-
-    </div> -->
-
-    <hr>
-    <!--EXPERIENCE TITLE-->
-    <div class="section_title">
-        <div class="experience">Experience</div>
-    </div>
-        <!-- have a section list for each job experience-->
-        <!-- Security Engineer Job-->
-        <div class="section_list">
-            <div class="left">
-                <div class="job_title">Security Engineer</div>
-                <div class="company_name">Trans Bay Cable (Next Era Energy Subsidiary)</div>
-                <div class="bullet_points">
-                    <li>Utilized Cisco Firepower Management Center (NGFW) and Windows GPO to efficiently manage firewall rulesets inside Cisco ASA (SFR), including investigating and implementing new rules for enhanced security management inside the Purdue Model Network scheme. </li>
-                    <li>Led efforts to reorganize a server room, tracking all cables and assets, and moving them into new, larger racks to improve infrastructure management and efficiency.</li>
-                    <li>Led the procurement of a new management and inventory tracking system for cyber assets, streamlining asset management and reducing deployment times for special equipment.</li>
-                    <li>Deployed network and asset monitoring solutions to enhance visibility and optimize the management of network assets (PRTG / OPC UA Server).</li>
-                    <li>Monitored and investigated network alerts through SIEM (Tripwire).</li>
-                    <li>Conducted vulnerability scanning and documentation for new assets introduced into the network.</li>
-                    <li>Managed Active Directory users inside of Industrial Control LAN including implementation of GPOs to restrict access.</li>
-                    <li>Executed the deployment of Trend Micro Apex One agents to fortify endpoints within ICS and DMZ networks.</li>
-                    <li>Gathered and documented evidence to ensure compliance with NERC CIP regulations within the IT infrastructure, ensuring a robust audit trail.</li>
-                    <li>Contributed in the implementation of Dragos inside of Control and DMZ networks found in the Purdue Model. </li>
-                    <li>Designed a secure pathway to remotely execute code between two networks utilizing JEA (Just Enough Administration) for PowerShell, ensuring that strict network segmentation is maintained.</li>
-                    <li>Collaborated in backup management processes, documentation, and disaster recovery initiatives to ensure comprehensive data protection and business continuity (Veeam).</li>
-                    <li>Directed vendor interactions and authored scopes of work for effective project delivery.</li>
-
-                </div>     
-            </div>
-
-            <div class="right">
-                <div class="job_date">Aug 2021 - Present</div>
-                <div class="job_location">Remote</div>
-            </div>     
-        </div>
-
-        <!--IT Security Intern Job-->
-        <div class="section_list">
-            <div class="left">
-                <div class="job_title">IT Security Intern</div>
-                <div class="company_name">Trans Bay Cable LLC</div>
-                <div class="bullet_points">
-                    <li>NERC CIP 007-6 (Physical and Logical Port Security): Creation of firewall rulesets to only needed traffic to pass through.</li>
-                    <li>Port analysis on critical infrastructure to develop rulesets to harden security</li>
-                    <li>NERC CIP 010-3 (Configuration Change Management, Baselines): Followed procedures for applying changes to systems with authorization from necessary members of team. </li>
-                    <li>Implementation of 2FA (DUO) on end point devices for whole company </li>
-                    <li>Tools: Windows Firewall, Active Directory, Group Policy, PDQ Deploy, PowerShell, Event Viewer</li>
-                </div>
-            </div>
-            <div class="right">
-                <div class="job_date">May 2018 - Aug 2019</div>
-                <div class="job_location">SF Bay Area</div>
-            </div>
-        </div>
-    <!--EDUCATION TITLE-->
-    <div class="section_title">
-        <div class="education">Education</div>
-    </div>  
-
-        <!--DEGREE SECTION-->
-        <div class="section_list">
-            <div class="left">
-                <div class="degree_title">Business Administration, B.S.: Information Technology</div>
-                <div class="school">California State University East Bay</div>
-            </div>
-
-            <div class="right">
-                <div class="graduation_date">Spring 2021</div>
-                <div class="school_location">Hayward, CA</div>
-            </div>
-        </div>
-    <!--CERTIFICATION SECTION-->
-    <div class="section_title">
-        <div class="certifications">Certifications</div>
+    <!-- Visit Counter -->
+    <div class="counter-bar">
+      <div class="counter-dot"></div>
+      Website Visits&ensp;<span class="counter-val" id="visits_count">Loading...</span>
     </div>
 
-        <!--AWS CCP CERTIFICATION-->
-        <div class="section_list">
-            <div class="left">
-                <div class="certification_name">AWS CCP (Certified Cloud Practioner)</div>
-            </div>
+    <!-- Header -->
+    <header>
+      <h1 class="name">Patrick<br /><span>Nguyen</span></h1>
+      <div class="meta">
+        <span><a href="mailto:nguyen.c.patrick@gmail.com">nguyen.c.patrick@gmail.com</a></span>
+        <span>New York, NY</span>
+      </div>
+    </header>
 
-            <div class="right">
-                <div class="certification_issue_date">Mar 2023</div>
-                <div class="certification_verification">
-                    <a href="https://www.credly.com/badges/d72d6969-26ae-48ce-a131-8b09e089c7c6/public_url">Certification Link</a>
-                </div>
-                
-            </div>
+    <!-- Experience -->
+    <section>
+      <div class="section-label">Experience</div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-title">OT Security Engineer | Critical Infrastructure Protection | NERC CIP Compliance</div>
+          <div class="entry-org">Trans Bay Cable (Energy Infrastructure Subsidiary of NextEra Energy)</div>
+          <div class="entry-summary">Dedicated Security Engineer specializing in the design, implementation, and regulatory compliance of segmented OT/IT environments and critical energy infrastructure.</div>
         </div>
-
-        <!--AWS SAA CERTIFICATION-->
-        <div class="section_list">
-            <div class="left">
-                <div class="certification_name">AWS SAA (Solutions Architect Associate)</div>
-            </div>
-
-            <div class="right">
-                <div class="certification_issue_date">Oct 2024</div>
-                <div class="certification_verification">
-                    <a href="https://www.credly.com/badges/fe13802c-2927-4f49-abe9-e9ec32d9fce9/public_url">Certification Link</a>
-                </div>
-                
-            </div>
+        <div class="entry-meta">
+          <div class="entry-date">Aug 2021 – Present</div>
+          <div class="entry-location">Remote</div>
         </div>
+        <ul class="bullets">
+          <li>Integrated and enforced Purdue Model network segmentation protecting OT/ICS assets, reducing lateral movement risk between operational and corporate environments.</li>
+          <li>Deployed and administered Check Point firewalls managing 250+ rules and RBAC policies to enforce segmentation aligned with NERC CIP requirements across IT/OT environments.</li>
+          <li>Maintained NERC CIP aligned firewall rule governance by documenting justification, validating service necessity, and supporting audit evidence requests.</li>
+          <li>Supported implementation of Dragos to enhance OT specific threat detection within segmented control and DMZ networks.</li>
+          <li>Hardened ICS Active Directory environment by enforcing least-privilege policies and restricting administrative access to critical control systems.</li>
+          <li>Established centralized monitoring across OT assets utilizing PRTG to improve operational visibility and enable early anomaly detection within segmented control networks.</li>
+          <li>Designed secure remote execution pathway between segmented networks using Just Enough Administration (JEA) for PowerShell, enabling controlled cross-boundary operations without violating segmentation policies.</li>
+          <li>Investigated and triaged SIEM alerts in Tripwire Log Center by correlating firewall, endpoint, and system logs, assessing severity and operational impact to validate or dismiss potential security threats.</li>
+          <li>Implemented automated and secure configuration backups for Check Point firewalls using SCP with key-based authentication to ensure configuration integrity and rapid recovery capability.</li>
+          <li>Deployed Trend Micro Apex One agents across ICS and DMZ networks, enhancing endpoint visibility and malware protection within segmented OT environments.</li>
+          <li>Led consolidation and reorganization of 10+ server racks housing 200+ assets, upgrading power circuits from 20A to 30A to increase load capacity, improve distribution efficiency, and support future infrastructure growth.</li>
+          <li>Led procurement and implementation of centralized cyber asset inventory system to improve asset traceability and support compliance and management initiatives.</li>
+        </ul>
+      </div>
 
-    <!--Skills / Interests-->
-    <div class="section_title">
-        <div class="left">
-            <div class="Skills_Interests">Skills / Interests / Projects</div>
+      <div class="entry">
+        <div class="entry-head">
+          <div class="entry-title">IT Security Intern</div>
+          <div class="entry-org">Trans Bay Cable</div>
         </div>
-    </div>
-
-        <div class="section_list">
-            <div class="left">
-                <div class="synology_nas">Synology NAS (Homelab)</div>
-                <div class="bullet_points">
-                    <li>VPN / Site-to-site VPN Implementation (OpenVPN / Synology VPN)</li>
-                    <li>Multi-site NVR setup for surveillance</li>
-                    <li>Backup Implementation for Home use and also for small office (Active Backup for Business) </li>
-                    <li>File Management System (Synology Drive)</li>
-                    <li>Tesla Powerwall information display (Grafana, Docker, Telegraf, influxdb) </li>
-                
-                </div>
-            </div>
+        <div class="entry-meta">
+          <div class="entry-date">May 2018 – Aug 2019</div>
+          <div class="entry-location">SF Bay Area</div>
         </div>
+        <ul class="bullets">
+          <li>Assisted in implementation of NERC CIP-007-6 controls, designing firewall rulesets to restrict unnecessary logical ports and services.</li>
+          <li>Conducted port analysis on critical HVDC infrastructure systems, reducing exposed services by approximately 40%.</li>
+          <li>Supported enterprise-wide implementation of MFA (DUO) across company endpoints integrated with Active Directory.</li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="section_list">
-            <div class="left">
-                <div class="html_resume_project"> HTML Resume Project</div>
-                <div class="bullet_points">
-                    <li><a href="https://www.paatrick.com">https://www.paatrick.com</a> </li>
-                    <li> Created online resume using HTML and CSS. Hosted on AWS S3 and delivered via AWS CloudFront. AWS Route 53 used for domain name. </li>
-                    <li>Secured with HTTPS. Redirects HTTP requests to HTTPS site.</li>
-                    <li>Website visits counter created with AWS DynamoDB, AWS Lambda, AWS API Gateway and JavaScript.</li>
-                </div>
-            </div>
+    <!-- Technical Skills -->
+    <section>
+      <div class="section-label">Technical Skills</div>
+
+      <div class="skills-group">
+        <div class="skills-category">Firewalls &amp; Networking</div>
+        <div class="skills-list">Check Point, Cisco Firepower, Network Segmentation, VPN, ACLs, TCP, IP Networking, Network Security, Information Security</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category">OT / ICS Security</div>
+        <div class="skills-list">Purdue Model Architecture, NERC CIP, SCADA/ICS Environments, Asset Visibility</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category">Security Operations</div>
+        <div class="skills-list">SIEM Analysis, Vulnerability Management, Endpoint Protection, Tripwire Log Center</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category">Identity &amp; Infrastructure</div>
+        <div class="skills-list">Active Directory, Group Policy (GPO), RBAC, Windows Server, Check Point Identity Awareness, Linux, Cisco ISE, TACACS+</div>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-category">Cloud (Exposure)</div>
+        <div class="skills-list">AWS S3, CloudFront, Route 53, DynamoDB, Lambda, API Gateway</div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <div class="section-label">Education</div>
+      <div class="edu-entry">
+        <div class="edu-degree">B.S. Business Administration — Information Technology</div>
+        <div class="edu-when">Spring 2021</div>
+        <div class="edu-school">California State University East Bay</div>
+        <div class="edu-where">Hayward, CA</div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section>
+      <div class="section-label">Certifications</div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-abbr">AWS SAA</div>
+          <div class="cert-name">Solutions Architect Associate</div>
+          <div class="cert-footer">
+            <span class="cert-date">Oct 2024</span>
+            <a href="https://www.credly.com/badges/fe13802c-2927-4f49-abe9-e9ec32d9fce9/public_url" class="cert-link" target="_blank" rel="noopener">View ↗</a>
+          </div>
         </div>
+        <div class="cert-card">
+          <div class="cert-abbr">AWS CCP</div>
+          <div class="cert-name">Certified Cloud Practitioner</div>
+          <div class="cert-footer">
+            <span class="cert-date">Mar 2023</span>
+            <a href="https://www.credly.com/badges/d72d6969-26ae-48ce-a131-8b09e089c7c6/public_url" class="cert-link" target="_blank" rel="noopener">View ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- End DIV-->
-</div>
+    <footer>
+      <span>Patrick Nguyen · OT Security Engineer</span>
+      <span>New York, NY</span>
+    </footer>
 
-<!-- <button onClick="changeColor()">BUTTON</button>
-<p id=demo>TEXT CHANGER</p> -->
+  </div>
 </body>
-
-
-<!-- <div id="api_view_count"></div>"> -->
-
 </html>
