@@ -21,3 +21,7 @@ terraform.tfplan
 # Ignore editor backup files
 *~
 *.swp
+
+# Ignore macOS metadata files
+.DS_Store
+**/.DS_Store
