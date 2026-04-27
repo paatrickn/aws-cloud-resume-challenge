@@ -25,3 +25,6 @@ terraform.tfplan
 # Ignore macOS metadata files
 .DS_Store
 **/.DS_Store
+
+# Ignore Claude Code configuration
+.claude/
