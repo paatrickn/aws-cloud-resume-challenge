@@ -20,6 +20,16 @@
       --accent2: oklch(0.55 0.20 264);
     }
 
+    [data-theme="dark"] {
+      --bg:      oklch(0.13 0.01 250);
+      --surface: oklch(0.18 0.012 250);
+      --ink:     oklch(0.93 0.005 80);
+      --muted:   oklch(0.62 0.01 250);
+      --rule:    oklch(0.28 0.01 250);
+      --accent:  oklch(0.68 0.18 264);
+      --accent2: oklch(0.68 0.18 264);
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
@@ -132,7 +142,7 @@
     .summary-text {
       font-size: 14.5px;
       font-weight: 300;
-      color: oklch(0.38 0.01 250);
+      color: var(--ink);
       line-height: 1.7;
       font-style: italic;
     }
@@ -188,7 +198,7 @@
 
     .entry-summary {
       font-size: 13px;
-      color: oklch(0.38 0.01 250);
+      color: var(--ink);
       font-weight: 300;
       font-style: italic;
       margin-bottom: 12px;
@@ -203,7 +213,7 @@
     }
     .entry-location {
       font-size: 11px;
-      color: oklch(0.65 0.005 250);
+      color: var(--muted);
       margin-top: 2px;
     }
 
@@ -219,7 +229,7 @@
       padding-left: 14px;
       margin-bottom: 5px;
       font-size: 13.5px;
-      color: oklch(0.28 0.01 250);
+      color: var(--ink);
       line-height: 1.6;
       font-weight: 300;
     }
@@ -270,7 +280,7 @@
     }
     .edu-where {
       font-size: 11px;
-      color: oklch(0.65 0.005 250);
+      color: var(--muted);
       text-align: right;
     }
 
@@ -363,7 +373,7 @@
     }
     .skills-list {
       font-size: 13.5px;
-      color: oklch(0.28 0.01 250);
+      color: var(--ink);
       font-weight: 300;
       line-height: 1.6;
     }
@@ -377,8 +387,47 @@
       align-items: center;
       justify-content: space-between;
       font-size: 11px;
-      color: oklch(0.72 0.005 250);
+      color: var(--muted);
       letter-spacing: 0.04em;
+    }
+
+    /* ── Dark mode toggle ─────────────────────────── */
+    .theme-toggle-wrap {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 100;
+    }
+    .theme-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 17px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .theme-toggle-wrap:hover .theme-toggle,
+    .theme-toggle-wrap:hover .theme-label {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* ── Responsive ───────────────────────────────── */
@@ -391,6 +440,11 @@
   </style>
 </head>
 <body>
+  <div class="theme-toggle-wrap" id="theme-toggle-wrap">
+    <span class="theme-label" id="theme-label">Dark Mode</span>
+    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">☀</button>
+  </div>
+
   <div class="page">
 
     <!-- Visit Counter -->
@@ -530,5 +584,24 @@
     </footer>
 
   </div>
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const label  = document.getElementById('theme-label');
+    const root   = document.documentElement;
+
+    function applyTheme(dark) {
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
+      toggle.textContent = dark ? '☾' : '☀';
+      label.textContent  = dark ? 'Light Mode' : 'Dark Mode';
+    }
+
+    applyTheme(localStorage.getItem('theme') === 'dark');
+
+    toggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      applyTheme(!isDark);
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
+  </script>
 </body>
 </html>
