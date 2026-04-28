@@ -83,7 +83,7 @@
 
     .name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(42px, 7vw, 68px);
+      font-size: clamp(52px, 9vw, 82px);
       font-weight: 400;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -394,7 +394,7 @@
     /* ── Dark mode toggle ─────────────────────────── */
     .theme-toggle-wrap {
       position: fixed;
-      top: 20px;
+      top: 11px;
       right: 24px;
       display: flex;
       align-items: center;
@@ -428,6 +428,54 @@
     .theme-toggle-wrap:hover .theme-label {
       border-color: var(--accent);
       color: var(--accent);
+    }
+
+    /* ── Sticky header ────────────────────────────── */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 170px 0 40px;
+      min-height: 60px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 1px 12px oklch(0 0 0 / 0.06);
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .sticky-header.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .sticky-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .sticky-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 12px;
+    }
+    .sticky-meta a {
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .sticky-meta a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
     }
 
     /* ── Back to top ──────────────────────────────── */
@@ -471,11 +519,13 @@
       .edu-entry { grid-template-columns: 1fr; }
       .edu-when, .edu-where { text-align: left; }
       .back-to-top { bottom: 20px; right: 16px; }
+      .sticky-header { padding: 10px 16px; gap: 12px; }
+      .sticky-meta { gap: 14px; font-size: 11px; }
     }
 
     /* ── Print ────────────────────────────────────── */
     @media print {
-      .theme-toggle-wrap, .back-to-top, .counter-bar { display: none; }
+      .theme-toggle-wrap, .back-to-top, .counter-bar, .sticky-header { display: none; }
       html { font-size: 11px; background: #fff; color: #000; }
       .page { max-width: 100%; padding: 0; margin: 0; }
       a { color: inherit; text-decoration: none; }
@@ -487,6 +537,14 @@
   </style>
 </head>
 <body>
+  <div class="sticky-header" id="sticky-header">
+    <span class="sticky-name">Patrick Nguyen</span>
+    <div class="sticky-meta">
+      <a href="mailto:nguyen.c.patrick@gmail.com">nguyen.c.patrick@gmail.com</a>
+      <a href="https://www.linkedin.com/in/paatricknguyen/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </div>
+
   <div class="theme-toggle-wrap" id="theme-toggle-wrap">
     <span class="theme-label" id="theme-label">Dark Mode</span>
     <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">☀</button>
@@ -656,7 +714,12 @@
     });
 
     const btt = document.getElementById('back-to-top');
+    const stickyHeader = document.getElementById('sticky-header');
+    const mainHeader = document.querySelector('header');
+
     window.addEventListener('scroll', () => {
+      const pastHeader = mainHeader.getBoundingClientRect().bottom < 0;
+      stickyHeader.classList.toggle('visible', pastHeader);
       btt.classList.toggle('visible', window.scrollY > 300);
     });
     btt.addEventListener('click', () => {
