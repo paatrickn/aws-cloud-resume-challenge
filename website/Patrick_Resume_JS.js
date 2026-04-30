@@ -81,7 +81,11 @@ function rollDigits(el, oldStr, newStr) {
             stack.appendChild(dNew);
             wrap.appendChild(stack);
             (function (s) {
-                setTimeout(function () { s.classList.add('roll'); }, 0);
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () {
+                        s.style.transform = 'translateY(-1.15em)';
+                    });
+                });
             })(stack);
         } else {
             var digit = document.createElement('span');
