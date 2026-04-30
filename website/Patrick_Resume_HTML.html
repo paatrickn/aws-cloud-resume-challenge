@@ -99,13 +99,14 @@
     .counter-val {
       color: var(--accent);
       font-weight: 500;
+      display: flex;
+      align-items: center;
     }
     .counter-digit-wrap {
-      display: inline-block;
+      display: block;
       overflow: hidden;
       height: 1.15em;
       line-height: 1.15em;
-      vertical-align: middle;
     }
     .counter-digit {
       display: block;
@@ -113,6 +114,9 @@
     }
     .counter-digit-stack {
       transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .counter-digit-stack.roll {
+      transform: translateY(-1.15em);
     }
 
     /* ── Header ───────────────────────────────────── */
