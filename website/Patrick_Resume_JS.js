@@ -14,10 +14,14 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("visits_count").innerHTML = xhttp.responseText;
+        var dot = document.querySelector(".counter-dot");
+        dot.classList.remove("blink");
+        void dot.offsetWidth; // force reflow so re-adding the class restarts the animation
+        dot.classList.add("blink");
+        setTimeout(function () { dot.classList.remove("blink"); }, 1000);
     }
 };
 xhttp.open("GET", "https://pi8qackvt7.execute-api.us-west-1.amazonaws.com/default/incrementViewcount", true);
-// xhttp.setRequestHeader('Access-Control-Allow-Origin', 'https://paatrick.com');
 xhttp.send();
 
 

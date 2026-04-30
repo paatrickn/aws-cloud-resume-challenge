@@ -70,6 +70,17 @@
       border-radius: 50%;
       background: var(--accent);
       flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    @keyframes blink-green {
+      0%   { background: var(--accent); box-shadow: none; }
+      30%  { background: #22c55e; box-shadow: 0 0 6px #22c55e; }
+      70%  { background: #22c55e; box-shadow: 0 0 6px #22c55e; }
+      100% { background: var(--accent); box-shadow: none; }
+    }
+    .counter-dot.blink {
+      animation: blink-green 1s ease forwards;
     }
     .counter-val {
       color: var(--accent);
