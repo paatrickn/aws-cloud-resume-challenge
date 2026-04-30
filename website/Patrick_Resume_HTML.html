@@ -98,18 +98,19 @@
     .meta {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
       gap: 6px 28px;
       font-size: 13px;
       color: var(--muted);
       font-weight: 300;
     }
-    .meta a {
+    .meta a:not(.download-btn) {
       color: var(--muted);
       text-decoration: none;
       border-bottom: 1px solid var(--rule);
       transition: color 0.15s, border-color 0.15s;
     }
-    .meta a:hover {
+    .meta a:not(.download-btn):hover {
       color: var(--accent);
       border-color: var(--accent);
     }
