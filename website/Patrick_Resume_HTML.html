@@ -378,6 +378,26 @@
       line-height: 1.6;
     }
 
+    /* ── Download button ─────────────────────────── */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .download-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
     /* ── Footer ───────────────────────────────────── */
     footer {
       margin-top: 72px;
@@ -565,6 +585,7 @@
         <span><a href="mailto:nguyen.c.patrick@gmail.com">nguyen.c.patrick@gmail.com</a></span>
         <span><a href="https://www.linkedin.com/in/paatricknguyen/" target="_blank" rel="noopener">LinkedIn</a></span>
         <span>New York, NY</span>
+        <a href="/Patrick_Nguyen_Resume.pdf" download class="download-btn">↓ Resume</a>
       </div>
     </header>
 
