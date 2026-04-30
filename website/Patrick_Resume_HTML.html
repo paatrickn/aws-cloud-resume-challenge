@@ -63,6 +63,7 @@
       text-transform: uppercase;
       color: var(--muted);
       font-family: 'DM Sans', monospace;
+      position: relative;
     }
     .counter-dot {
       width: 6px;
@@ -81,6 +82,19 @@
     }
     .counter-dot.blink {
       animation: blink-green 1s ease forwards;
+    }
+
+    @keyframes float-up {
+      0%   { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-18px); }
+    }
+    .counter-plus-one {
+      position: absolute;
+      font-size: 11px;
+      font-weight: 500;
+      color: #22c55e;
+      pointer-events: none;
+      animation: float-up 1s ease forwards;
     }
     .counter-val {
       color: var(--accent);

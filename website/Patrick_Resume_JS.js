@@ -18,7 +18,22 @@ xhttp.onreadystatechange = function () {
         dot.classList.remove("blink");
         void dot.offsetWidth; // force reflow so re-adding the class restarts the animation
         dot.classList.add("blink");
-        setTimeout(function () { dot.classList.remove("blink"); }, 1000);
+
+        var plusOne = document.createElement("span");
+        plusOne.className = "counter-plus-one";
+        plusOne.textContent = "+1";
+        var bar = document.querySelector(".counter-bar");
+        var valEl = document.getElementById("visits_count");
+        var rect = valEl.getBoundingClientRect();
+        var barRect = bar.getBoundingClientRect();
+        plusOne.style.left = (rect.right - barRect.left + 4) + "px";
+        plusOne.style.top = "0px";
+        bar.appendChild(plusOne);
+
+        setTimeout(function () {
+            dot.classList.remove("blink");
+            plusOne.remove();
+        }, 1000);
     }
 };
 xhttp.open("GET", "https://pi8qackvt7.execute-api.us-west-1.amazonaws.com/default/incrementViewcount", true);
