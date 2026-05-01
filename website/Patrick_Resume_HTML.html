@@ -7,6 +7,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=block" rel="stylesheet" />
+  <script>
+    (function(){
+      var s = localStorage.getItem('theme');
+      var dark = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
   <script type="text/javascript" src="Patrick_Resume_JS.js" defer></script>
   <!-- <script type="text/javascript" src="https://paatrick.com/Patrick_Resume_JS.js"></script> -->
   <style>
