@@ -641,20 +641,28 @@
         <div class="entry-head">
           <div class="entry-title">OT Security Engineer</div>
           <div class="entry-org">Trans Bay Cable (Energy Infrastructure Subsidiary of NextEra Energy)</div>
+          <div class="entry-summary">Own the firewall and remote-access boundary between corporate IT and the control environment for an HVDC transmission link.</div>
         </div>
         <div class="entry-meta">
           <div class="entry-date">Aug 2021 – Present</div>
           <div class="entry-location">Remote</div>
         </div>
         <ul class="bullets">
-          <li>Integrated and enforced Purdue Model network segmentation across Levels 2–5, protecting OT/ICS assets and isolating operational environments from corporate networks in alignment with NERC CIP-005 ESP requirements.</li>
-          <li>Deployed and administered Check Point firewalls managing 250+ rules and RBAC policies to enforce segmentation aligned with NERC CIP requirements across IT/OT environments.</li>
-          <li>Maintained NERC CIP-005 firewall rule governance by documenting business justifications and source references for each permitted rule, supporting audit-ready evidence for compliance reviews.</li>
+          <li>Own Check Point R81.20 firewall policy design and administration across PROD and T&amp;D environments — three distributed deployments (dedicated management server with a two-gateway HA cluster) plus one standalone gateway/management deployment — covering 7 gateways and 250+ rules and RBAC policies.</li>
+          <li>Designed and enforced Purdue Model segmentation across Levels 2–5 and the OT DMZ, isolating control networks from corporate and permitting only justified, least-privilege cross-boundary flows in alignment with NERC CIP-005 ESP requirements.</li>
+          <li>Built and own the Interactive Remote Access (IRA) path into OT: users on the corporate VPN reach the DMZ, authenticate to Windows jump hosts (RDS) with a separate DMZ-domain account and RSA MFA, and RBAC-scoped Check Point rules govern onward access into the control network.</li>
+          <li>Maintained NERC CIP-005 firewall rule governance by documenting business justifications and source references for each permitted rule, producing audit-ready evidence for compliance reviews.</li>
+          <li>Managed Cisco Firepower (FMC) / ASA rulesets and Windows host-based firewall policy through Group Policy alongside Check Point to support segmentation within the Purdue architecture.</li>
+          <li>Designed a secure remote-execution pathway between segmented networks using PowerShell Just Enough Administration (JEA), enabling controlled cross-boundary operations without weakening segmentation.</li>
+          <li>Implemented automated, secure configuration backups for Check Point firewalls using SCP with key-based authentication to protect configuration integrity and enable rapid recovery.</li>
           <li>Configured firewall rules and Active Directory integration to support Dragos deployment, enabling passive OT-specific threat detection and monitoring across segmented control and DMZ networks.</li>
-          <li>Hardened ICS Active Directory environment by enforcing least-privilege policies and restricting administrative access to critical control systems.</li>
-          <li>Designed and implemented secure Interactive Remote Access (IRA) utilizing MFA and RBAC to enforce least-privilege, role-based access for remote administration across segmented IT/OT networks, in alignment with NERC CIP-005 remote access requirements.</li>
+          <li>Hardened the ICS Active Directory environment by enforcing least-privilege Group Policy and restricting administrative access to critical control systems.</li>
+          <li>Configured PRTG Network Monitor to deliver infrastructure availability alerts to HMI displays, giving operators real-time visibility into IT/OT dependencies such as Active Directory and core network services.</li>
           <li>Triaged SIEM alerts in Tripwire Log Center by correlating firewall, endpoint, and OT system logs to assess operational impact and validate or dismiss threats within ICS environments.</li>
           <li>Deployed Trend Micro Apex One across Windows-based endpoints in ICS and DMZ networks, enhancing endpoint visibility and malware protection within segmented OT environments.</li>
+          <li>Performed vulnerability assessments and remediation on IT/OT devices and documented system baselines to support compliance.</li>
+          <li>Led procurement and rollout of a centralized cyber asset inventory system, directed vendor interactions, and authored scopes of work for security projects.</li>
+          <li>Led consolidation of 10+ server racks housing 200+ assets, upgrading power circuits from 20A to 30A to increase capacity and support future infrastructure growth.</li>
         </ul>
       </div>
 
@@ -670,6 +678,7 @@
         <ul class="bullets">
           <li>Assisted in implementation of NERC CIP-007-6 controls, designing firewall rulesets to restrict unnecessary logical ports and services.</li>
           <li>Conducted port analysis on critical HVDC infrastructure systems, reducing exposed services by approximately 40%.</li>
+          <li>Followed NERC CIP-010-3 configuration change management procedures and created baselines for infrastructure components.</li>
           <li>Supported enterprise-wide implementation of MFA (DUO) across company endpoints integrated with Active Directory.</li>
         </ul>
       </div>
@@ -681,27 +690,27 @@
 
       <div class="skills-group">
         <div class="skills-category">Firewalls &amp; Networking</div>
-        <div class="skills-list">Check Point, Cisco Firepower, Network Segmentation, VPN, ACLs, TCP, IP Networking, Network Security, Information Security</div>
+        <div class="skills-list">Check Point R81.20 (HA Clusters, RBAC, Identity Awareness), Cisco Firepower / ASA, Network Segmentation, OT DMZ Design, VPN, ACLs, VLANs, TCP/IP Networking, Network Security</div>
       </div>
 
       <div class="skills-group">
         <div class="skills-category">OT / ICS Security</div>
-        <div class="skills-list">Purdue Model Architecture, NERC CIP, SCADA/ICS Environments, Asset Visibility</div>
+        <div class="skills-list">Purdue Model Architecture, NERC CIP (CIP-005, CIP-007, CIP-010), Interactive Remote Access (IRA), Dragos, SCADA/ICS Environments, Asset Visibility</div>
       </div>
 
       <div class="skills-group">
         <div class="skills-category">Security Operations</div>
-        <div class="skills-list">SIEM Analysis, Vulnerability Management, Endpoint Protection, Tripwire Log Center</div>
+        <div class="skills-list">SIEM Analysis (Tripwire Log Center), Vulnerability Management, Endpoint Protection (Trend Micro Apex One), PRTG Network Monitoring, Veeam Backup &amp; DR</div>
       </div>
 
       <div class="skills-group">
         <div class="skills-category">Identity &amp; Infrastructure</div>
-        <div class="skills-list">Active Directory, Group Policy (GPO), RBAC, Windows Server, Check Point Identity Awareness, Linux, Cisco ISE, TACACS+</div>
+        <div class="skills-list">Active Directory, Group Policy (GPO), RBAC, RSA MFA, Duo MFA, Windows Server / RDS Jump Hosts, PowerShell (JEA), Linux, Cisco ISE, TACACS+</div>
       </div>
 
       <div class="skills-group">
         <div class="skills-category">Cloud</div>
-        <div class="skills-list">AWS S3, CloudFront, Route 53, DynamoDB, Lambda, API Gateway</div>
+        <div class="skills-list">AWS S3, CloudFront, Route 53, DynamoDB, Lambda, API Gateway, Terraform, GitHub Actions</div>
       </div>
     </section>
 
